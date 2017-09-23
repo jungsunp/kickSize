@@ -1,63 +1,56 @@
-import axios from 'axios'
-import history from '../history'
+import axios from 'axios';
 
 /**
  * ACTION TYPES
  */
-const GET_SNEAKERS = 'GET_SNEAKERS';
-const ADD_SNEAKER = 'ADD_SNEAKER';
-
-
-/**
- * INITIAL STATE
- */
-const defaultUser = {}
+const SET_SNEAKERS = 'SET_SNEAKERS';
+const ADD_SNEAKER = 'ADD_SNEAKERT';
 
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+export const setSneakers = sneakers => ({
+  type: SET_SNEAKERS,
+  sneakers,
+});
+
+export const addSneaker = sneaker => ({
+  type: ADD_SNEAKER,
+  sneaker,
+});
 
 /**
  * THUNK CREATORS
  */
-export const me = () =>
-  dispatch =>
-    axios.get('/auth/me')
-      .then(res =>
-        dispatch(getUser(res.data || defaultUser)))
-      .catch(err => console.log(err))
+export const fetchSneakers = () => (dispatch) => {
+  axios.get('/api/sneakers')
+    .then(res => res.data)
+    .then(sneakers => dispatch(setSneakers(sneakers)))
+    .catch(console.error);
+};
 
-export const auth = (email, password, method) =>
-  dispatch =>
-    axios.post(`/auth/${method}`, { email, password })
-      .then(res => {
-        dispatch(getUser(res.data))
-        history.push('/home')
+export const addSneakerThunk = ((sneaker, history) => (
+  ((dispatch) => {
+    axios.post('/api/sneakers', sneaker)
+      .then(res => res.data)
+      .then((newSneaker) => {
+        dispatch(addSneaker(newSneaker));
+        history.push(`/sneaker/${newSneaker.id}`);
       })
-      .catch(error =>
-        dispatch(getUser({error})))
-
-export const logout = () =>
-  dispatch =>
-    axios.post('/auth/logout')
-      .then(res => {
-        dispatch(removeUser())
-        history.push('/login')
-      })
-      .catch(err => console.log(err))
+      .catch(console.error);
+  })
+));
 
 /**
  * REDUCER
  */
-export default function (state = defaultUser, action) {
+export default function (sneakers = [], action) {
   switch (action.type) {
-    case GET_USER:
-      return action.user
-    case REMOVE_USER:
-      return defaultUser
+    case SET_SNEAKERS:
+      return action.sneakers;
+    case ADD_SNEAKER:
+      return sneakers.concat(action.sneaker);
     default:
-      return state
+      return sneakers;
   }
 }
