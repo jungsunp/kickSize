@@ -8,11 +8,11 @@ I created Kicksize to tackle this challenge of predicting the right sneaker size
 
 ## Motivation
 
-I always have been a big fan of sneakers since I was a kid. As a sneakers fan, I enjoy collecting rare sneakers that are sometimes very hard to get. A struggle I often face from this is that I don't know which size to get when I purchase those rare sneakers online. I have always wished there was a tool that can tell me the right size for sneakers without even trying them on. With my background in Math and Programming, I tackled this challenge.
+I always have been a big fan of sneakers since I was a kid. As a true sneakers fan, I enjoy collecting rare sneakers that are often only available from online. A struggle I face most oftenly from purchasing these rare sneakers is that I simply don't know which sizes to get. Not only do different sneakers brands use unique measurements, different models for the same brand also vary in measurements and shapes for the size. I have always wished there was a tool that could tell me the right size for sneakers without even trying them on. With my background in Math and Programming, I tackled this challenge.
 
 ## Build Status
 
-* **_[DISCUSS TRAVIS-CI WITH GROUP]_**
+* **_[TRAVIS-CI]_**
 
 ## Screenshots
 
@@ -23,43 +23,35 @@ I always have been a big fan of sneakers since I was a kid. As a sneakers fan, I
 
 ### Built with
 
-* *[Neo4j, a graph database](https://neo4j.com/)*
-* *[D3.js, data visualization tool](https://d3js.org/)*
 * *[PostgreSQL, an object-relational database system](https://www.postgresql.org/)*
 * *[Node.js, an asynchronous event driven JavaScript runtime environment](https://nodejs.org/en/)*
+* *[React, a framework for building UI](https://reactjs.org/)*
+* *[Redux, a state container for JS apps](http://redux.js.org/)*
+* *[React D3, a data visualization tool](http://www.reactd3.org/)*
+* *[Semantic UI, a framework for UI styling](https://semantic-ui.com/)*
 * *[npm, dependency management](https://www.npmjs.com/)*
 
 ## Features
 
-* Vocal speech analysis
-* Interactive games
-* User level assignment
-* Challenging quizzes based on user's level
-* Custom, tailored word suggestions for each user
-* Complex and interactive data visualizations for each user
+* Sneaker list page to choose certain sneakers
+* Sneaker detail page with detail information
+* Size calculation for each snakers model
+* Data visualizations for each sneakers
 * User profile page
 
 ## How To Run Locally
 
 To clone and run this application, you'll need [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer.
 
-You'll also need [Neo4j](https://neo4j.com/download/?ref=home), a popular graph database, as well as [PostgreSQL](https://www.postgresql.org/download/), a traditional object-relational database.
-
-Lastly, you'll need to make accounts for several APIs:
-* [twinword](https://www.twinword.com/api/)
-  * Natural language processing
-* [ROSETTE](https://developer.rosette.com/)
-  * Text analysis
-* [Google API](https://developers.google.com/identity/sign-in/web/devconsole-project)
-  * Not necessary to run application, but only if you would like to test login through a Google username/email account
+You'll also need [PostgreSQL](https://www.postgresql.org/download/), an object-relational database.
 
 From your command line:
 ```
 # Clone this repository
-$ git clone https://github.com/wordupapp/wordup.git
+$ git clone https://github.com/jungsunp/kickSize
 
 # Go into the repository
-$ cd wordup
+$ cd kickSize
 
 # Install dependencies
 $ npm install
@@ -70,11 +62,6 @@ $ npm run start-dev
 
 ## API Reference
 
-* **twinword**
-  * [Word Dictionary](https://www.twinword.com/api/word-dictionary.php)
-  * [Language Scoring](https://www.twinword.com/api/language-scoring.php)
-* **ROSETTE**
-  * [Morphological Analysis](https://www.rosette.com/capability/morphological-analysis/#overview)
 * **Google**
   * [Google OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2)
 
@@ -84,16 +71,13 @@ $ npm run start-dev
 
 ## How To Use
 
-1. Go to *[wordUp](https://wordup-app.herokuapp.com/)* and make a user account or log in with your Google account
-2. Record yourself using a sample prompt or your own imagination to get your first diagnostic baseline and an appropriate vocabulary level
-3. Start playing games, completing quizzes, and reviewing the recommended words section to improve your vocabulary!
+1. Go to *** and make a user account or log in with your Google account
+2. Enter your information: height, weight, and different sneakers you own with their sizes
+3. Find snekaers you wanted to purchase and let the application calculate the size!
 
 ## Credits
 
-* **_[Janine Garcia](https://github.com/jannncodes)_**
-* **_[Jonathan Kammo](https://github.com/jonathankammo)_**
 * **_[Jungsun Park](https://github.com/jungsunp)_**
-* **_[Robert Shaw](https://github.com/RobertShaw1)_**
 
 ## License
 
