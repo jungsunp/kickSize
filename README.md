@@ -1,4 +1,4 @@
-# wordUp
+# KickSize
 
 *What size should I get for these sneakers?*
 
