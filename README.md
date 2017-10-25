@@ -1,105 +1,100 @@
-# Boilermaker
+# wordUp
 
-*Good things come in pairs*
+*What size should I get for these sneakers?*
 
-Looking to mix up a backend with express/sequelize and a frontend with react/redux? That's `boilermaker`!
+Have you ever wanted to know the right size for sneakers you want to purchase online without even trying them on? Kicksize can help.
 
-Follow along with the workshop to make your own! This canonical version can serve as a reference, or a starting point all on its own.
+I created Kicksize to tackle this challenge of predicting the right sneaker size using the large set of user data. As a user, you enter three pieces of information: weight, height, and different sneakers you own with their sizes. Then, using a regression analysis library and a scoring algorithm, this web application attempts to calculate the size to suggest to the user. I am also using data visualization library React-D3 to display different sets of data used for the calculation.
 
-## Setup
+## Motivation
 
-To use this boilerplate, you'll need to take the following steps:
+I always have been a big fan of sneakers since I was a kid. As a sneakers fan, I enjoy collecting rare sneakers that are sometimes very hard to get. A struggle I often face from this is that I don't know which size to get when I purchase those rare sneakers online. I have always wished there was a tool that can tell me the right size for sneakers without even trying them on. With my background in Math and Programming, I tackled this challenge.
 
-* Don't fork or clone this repo! Instead, create a new, empty directory on your machine and `git init` (or create an empty repo on Github and clone it to your local machine)
-* Run the following commands:
+## Build Status
 
+* **_[DISCUSS TRAVIS-CI WITH GROUP]_**
+
+## Screenshots
+
+* **_[INSERT LOGO]_**
+* **_[INSERT SCREENSHOTS]_**
+
+## Tech Used
+
+### Built with
+
+* *[Neo4j, a graph database](https://neo4j.com/)*
+* *[D3.js, data visualization tool](https://d3js.org/)*
+* *[PostgreSQL, an object-relational database system](https://www.postgresql.org/)*
+* *[Node.js, an asynchronous event driven JavaScript runtime environment](https://nodejs.org/en/)*
+* *[npm, dependency management](https://www.npmjs.com/)*
+
+## Features
+
+* Vocal speech analysis
+* Interactive games
+* User level assignment
+* Challenging quizzes based on user's level
+* Custom, tailored word suggestions for each user
+* Complex and interactive data visualizations for each user
+* User profile page
+
+## How To Run Locally
+
+To clone and run this application, you'll need [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer.
+
+You'll also need [Neo4j](https://neo4j.com/download/?ref=home), a popular graph database, as well as [PostgreSQL](https://www.postgresql.org/download/), a traditional object-relational database.
+
+Lastly, you'll need to make accounts for several APIs:
+* [twinword](https://www.twinword.com/api/)
+  * Natural language processing
+* [ROSETTE](https://developer.rosette.com/)
+  * Text analysis
+* [Google API](https://developers.google.com/identity/sign-in/web/devconsole-project)
+  * Not necessary to run application, but only if you would like to test login through a Google username/email account
+
+From your command line:
 ```
-git remote add boilermaker https://github.com/FullstackAcademy/boilermaker.git
-git fetch boilermaker
-git merge boilermaker/master
+# Clone this repository
+$ git clone https://github.com/wordupapp/wordup.git
+
+# Go into the repository
+$ cd wordup
+
+# Install dependencies
+$ npm install
+
+# Run the application
+$ npm run start-dev
 ```
 
-Why did we do that? Because every once in a while, `boilermaker` may be updated with additional features or bug fixes, and you can easily get those changes from now on by entering:
+## API Reference
 
-```
-git fetch boilermaker
-git merge boilermaker/master
-```
+* **twinword**
+  * [Word Dictionary](https://www.twinword.com/api/word-dictionary.php)
+  * [Language Scoring](https://www.twinword.com/api/language-scoring.php)
+* **ROSETTE**
+  * [Morphological Analysis](https://www.rosette.com/capability/morphological-analysis/#overview)
+* **Google**
+  * [Google OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2)
 
-## Customize
+## Tests
 
-Now that you've got the code, follow these steps to get acclimated:
+* **_[DESCRIBE TESTS AND SHOW HOW TO RUN THEM WITH CODE EXAMPLES]_**
 
-* Update project name and description in `package.json` file
-* `npm install`, or `yarn install` - whatever you're into
-* Create two postgres databases: `boilermaker` and `boilermaker-test` (you can substitute these with the name of your own application - just be sure to go through and change the `package.json` and `server/db/db.js` to refer to the new names)
-  * By default, running `npm test` will use `boilermaker-test`, while regular development uses `boilermaker`
-* Create a file called `secrets.js` in the project root
-  * This file is `.gitignore`'d, and will *only* be required in your *development* environment
-  * Its purpose is to attach the secret env variables that you'll use while developing
-  * However, it's **very** important that you **not** push it to Github! Otherwise, *prying eyes* will find your secret API keys!
-  * It might look like this:
+## How To Use
 
-  ```
-    process.env.GOOGLE_CLIENT_ID = 'hush hush'
-    process.env.GOOGLE_CLIENT_SECRET = 'pretty secret'
-    process.env.GOOGLE_CALLBACK = '/auth/google/callback'
-  ```
+1. Go to *[wordUp](https://wordup-app.herokuapp.com/)* and make a user account or log in with your Google account
+2. Record yourself using a sample prompt or your own imagination to get your first diagnostic baseline and an appropriate vocabulary level
+3. Start playing games, completing quizzes, and reviewing the recommended words section to improve your vocabulary!
 
-* To use OAuth with Google, complete the step above with a real client ID and client secret from Google
-  * You can get them here: https://console.developers.google.com/apis/credentials
-* Finally, complete the section below to set up your linter
+## Credits
 
-## Linting
+* **_[Janine Garcia](https://github.com/jannncodes)_**
+* **_[Jonathan Kammo](https://github.com/jonathankammo)_**
+* **_[Jungsun Park](https://github.com/jungsunp)_**
+* **_[Robert Shaw](https://github.com/RobertShaw1)_**
 
-Linters are fundamental to any project - they ensure that your code has a consistent style, which is critical to writing readable code.
+## License
 
-Everyone has their own style, so Boilermaker does not come prepackaged with a linter. However, we `strongly` recommend that you (and your team, if working in a group) decide on a style, and stick with it. Here's what you need to do:
-
-* `npm install -g eslint`
-* In the root of your project, `eslint --init`
-* You will then be prompted to choose how you want to configure ESLint. We recommend selecting the `Use a popular style guide option`. The existing Boilermaker code was written in accordance with the `Standard` style, but you may choose a different one if you don't like it.
-  * [Standard style guide](https://standardjs.com/)
-  * [Airbnb style guide](https://github.com/airbnb/javascript)
-  * [Google style guide](https://google.github.io/styleguide/jsguide.html)
-* This will add an `.eslintrc.js`, `.eslintrc.yaml`, or `.eslintrc.json` (depending on which you choose) - `.js` or `.json` will usually work fine. You may also need to install an appropriate eslint plugin specific for your code editor.
-
-## Start
-
-`npm run start-dev` will make great things happen!
-
-If you want to run the server and/or webpack separately, you can also `npm run start-server` and `npm run build-client`.
-
-From there, just follow your bliss.
-
-## Deployment
-
-Ready to go world wide? Here's a guide to deployment!
-
-### Prep
-1. Set up the [Heroku command line tools](https://devcenter.heroku.com/articles/heroku-cli)
-2. `heroku login`
-3. Add a git remote for heroku:
-  - **If you're creating a new app...**
-    1. `heroku create` or `heroku create your-app-name` if you have a name in mind.
-    2. `heroku addons:create heroku-postgresql:hobby-dev` to add ("provision") a postgres database to your heroku dyno
-
-  - **If you already have a Heroku app...**
-    1.  `heroku git:remote your-app-name` You'll need to be a collaborator on the app.
-
-### When you're ready to deploy
-
-1. Make sure that all your work is fully committed and pushed to your master branch on Github.
-2. If you currently have an existing branch called "deploy", delete it now (`git branch -d deploy`). We're going to use a dummy branch with the name "deploy" (see below), so if you have one lying around, the script below will error
-3. `npm run deploy` - this will cause the following commands to happen in order:
-  - `git checkout -b deploy`: checks out a new branch called "deploy". Note that the name "deploy" here isn't magical, but it needs to match the name of the branch we specify when we push to our heroku remote.
-  - `webpack -p`: webpack will run in "production mode"
-  - `git add -f public/bundle.js public/bundle.js.map`: "force" add the otherwise gitignored build files
-  - `git commit --allow-empty -m 'Deploying'`: create a commit, even if nothing changed
-  - `git push --force heroku deploy:master`: push your local "deploy" branch to the "master" branch on heroku
-  - `git checkout master`: return to your master branch
-  - `git branch -D deploy`: remove the deploy branch
-
-Now, you should be deployed!
-
-Why do all of these steps? The big reason is because we don't want our production server to be cluttered up with dev dependencies like webpack, but at the same time we don't want our development git-tracking to be cluttered with production build files like bundle.js! By doing these steps, we make sure our development and production environments both stay nice and clean!
+* **_[INSERT APPROPRIATE LICENSE ONCE IT HAS BEEN ADDED TO REPO]_**
