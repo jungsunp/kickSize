@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const {User, Sneaker} = require('../db/models');
+const { User, Sneaker } = require('../../db/models');
+
 module.exports = router;
 
 // function adminGatekeeper(req, res, next) {
@@ -24,6 +25,6 @@ router.get('/', (req, res, next) => {
       'weight', 'gender', 'hasWideFeet'],
     include: [Sneaker], // eager loading
   })
-    .then((users) => res.json(users))
+    .then(users => res.json(users))
     .catch(next);
 });

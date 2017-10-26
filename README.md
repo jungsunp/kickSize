@@ -4,11 +4,11 @@
 
 Have you ever wanted to know the right size for sneakers you want to purchase online without even trying them on? Kicksize can help.
 
-I created Kicksize to tackle this challenge of predicting the right sneaker size using the large set of user data. As a user, you enter three pieces of information: weight, height, and different sneakers you own with their sizes. Then, using a regression analysis library and a scoring algorithm, this web application attempts to calculate the size to suggest to the user. I am also using data visualization library React-D3 to display different sets of data used for the calculation.
+I created Kicksize to tackle this challenge of predicting the right sneaker size using the large set of user data. As a user, you enter three pieces of information: weight, height, and different sneakers you own with their sizes. Then, using a regression analysis library and a scoring algorithm, this web application attempts to calculate the size to suggest to the user. The application also uses data visualization library React-D3 to display different sets of data used for the calculation.
 
 ## Motivation
 
-I always have been a big fan of sneakers since I was a kid. As a true sneakers fan, I enjoy collecting rare sneakers that are often only available from online. A struggle I face most oftenly from purchasing these rare sneakers is that I simply don't know which sizes to get. Not only do different sneakers brands use unique measurements, different models for the same brand also vary in measurements and shapes for the size. I have always wished there was a tool that could tell me the right size for sneakers without even trying them on. With my background in Math and Programming, I tackled this challenge.
+I always have been a big fan of sneakers since I was a kid. As a true sneakers fan, I enjoy collecting rare sneakers that are often available from online only. A struggle I often face from purchasing these rare sneakers is that I simply don't know which size to get. Not only do different sneakers brands use unique measurements, even different models for the same brand also often vary in measurements and shapes for the same size. I have always wished there was a tool that could tell me the right size for sneakers without even trying them on.
 
 ## Build Status
 
@@ -16,7 +16,6 @@ I always have been a big fan of sneakers since I was a kid. As a true sneakers f
 
 ## Screenshots
 
-* **_[INSERT LOGO]_**
 * **_[INSERT SCREENSHOTS]_**
 
 ## Tech Used
@@ -33,10 +32,11 @@ I always have been a big fan of sneakers since I was a kid. As a true sneakers f
 
 ## Features
 
-* Sneaker list page to choose certain sneakers
-* Sneaker detail page with detail information
-* Size calculation for each snakers model
-* Data visualizations for each sneakers
+* Sneakers list page to browse through different sneaker models
+* Search bar to search for particualr sneaker model
+* Sneaker detail page with sneaker model information
+* Size calculation for each snaker model
+* Graphs that are used for size calculation
 * User profile page
 
 ## How To Run Locally
