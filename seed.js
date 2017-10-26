@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 const toonavatar = require('cartoon-avatar');
 
 const db = require('./server/db');
-const {User, Sneaker, UserSneaker} = require('./server/db/models/');
+const { User, Sneaker } = require('./server/db/models/');
 
 /* -----------  Set up User data ----------- */
 
@@ -30,14 +30,14 @@ const userEmails = chance.unique(chance.email, numMaleUsers + numFemaleUsers);
 const randomMaleUser = () => {
   const bmi = Math.floor(Math.random() * 10) + 19; // Body Mass Index
   const height = Math.floor(Math.random() * 14) + 61;
-  const weight = bmi * height * height / 730;
+  const weight = (bmi * height * height) / 730;
 
   return User.create({
     email: userEmails.pop(),
     password: chance.string(),
-    name: chance.name({gender: 'male'}),
-    height: height,
-    weight: weight,
+    name: chance.name({ gender: 'male' }),
+    height,
+    weight,
     gender: 'male',
     photo: toonavatar.generate_avatar({gender: 'male'}),
   })
@@ -47,16 +47,16 @@ const randomMaleUser = () => {
 const randomFemaleUser = () => {
   const bmi = Math.floor(Math.random() * 10) + 19; // Body Mass Index
   const height = Math.floor(Math.random() * 14) + 58;
-  const weight = bmi * height * height / 730;
+  const weight = (bmi * height * height) / 730;
 
   return User.create({
     email: userEmails.pop(),
     password: chance.string(),
-    name: chance.name({gender: 'female'}),
-    height: height,
-    weight: weight,
+    name: chance.name({ gender: 'female' }),
+    height,
+    weight,
     gender: 'female',
-    photo: toonavatar.generate_avatar({gender: 'female'}),
+    photo: toonavatar.generate_avatar({ gender: 'female' }),
   })
     .catch(console.error);
 };
@@ -64,11 +64,11 @@ const randomFemaleUser = () => {
 const createUsers = () => {
   const promiseArr = [adminUser()];
 
-  for (let i = 0; i < numMaleUsers; i++) {
+  for (let i = 0; i < numMaleUsers; i += 1) {
     promiseArr.push(randomMaleUser());
   }
 
-  for (let i = 0; i < numFemaleUsers; i++) {
+  for (let i = 0; i < numFemaleUsers; i += 1) {
     promiseArr.push(randomFemaleUser());
   }
 
@@ -342,22 +342,22 @@ const seed = () => {
       const addSneakerPromArr = [];
       users.forEach((user) => {
         // pick random set of sneakers
-        numUserSneakers = Math.ceil(Math.random() * 10);
-        userSneakerArr = chance.pickset(sneakers, numUserSneakers);
+        const numUserSneakers = Math.ceil(Math.random() * 10);
+        const userSneakerArr = chance.pickset(sneakers, numUserSneakers);
 
         // pick random size based on height & weight
         let sizeFactor = (user.height + user.weight) - 160;
         sizeFactor = sizeFactor > 0 ? sizeFactor : 0;
         sizeFactor = sizeFactor < 110 ? sizeFactor : 110;
         sizeFactor = Math.floor(sizeFactor / 10) + 4;
-        let size = Math.floor(Math.random() * 5) + sizeFactor -2;
+        let size = (Math.floor(Math.random() * 5) + sizeFactor) - 2;
         size = size > 4 ? size : 4;
         size = size < 14 ? size : 14;
 
         // create promises for adding sneaker to user
         userSneakerArr.forEach((sneaker) => {
           addSneakerPromArr.push(user.addSneaker(sneaker, {
-            through: {size},
+            through: { size },
           }));
         });
       });
@@ -366,19 +366,20 @@ const seed = () => {
 };
 
 console.log('Syncing database kickSize ...');
-db.sync({force: true})
-.then(() => {
-  console.log('Seeding database kickSize ...');
-  return seed();
-})
-.then(() => {
-  console.log('Seeding successful!');
-})
-.catch((err) => {
-  console.log('Error from seeding!', err);
-})
-.then(() => {
-  db.close();
-  return null;
-});
+
+db.sync({ force: true })
+  .then(() => {
+    console.log('Seeding database kickSize ...');
+    return seed();
+  })
+  .then(() => {
+    console.log('Seeding successful!');
+  })
+  .catch((err) => {
+    console.log('Error from seeding!', err);
+  })
+  .then(() => {
+    db.close();
+    return null;
+  });
 
